@@ -1,6 +1,6 @@
 {
     "name": "meteor-random-node",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Meteor's Random Package for Straight Node – with built in crypto module",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
