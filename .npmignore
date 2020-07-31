@@ -4,3 +4,4 @@ test.js
 tsconfig.json
 .prettierrc.json
 .gitignore
+.idea
