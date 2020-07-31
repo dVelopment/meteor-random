@@ -1,33 +1,42 @@
 {
-  "name": "meteor-random-node",
-  "version": "0.0.5",
-  "description": "Meteor's Random Package for Straight Node – with built in crypto module",
-  "main": "index.js",
-  "scripts": {
-    "test": "node test.js"
-  },
-  "author": "Trever Faden",
-  "license": "BSD-2-Clause",
-  "dependencies": {},
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dVelopment/meteor-random.git"
-  },
-  "keywords": [
-    "random",
-    "meteor",
-    "crypto",
-    "api",
-    "key",
-    "generator",
-    "api",
-    "keys",
-    "tokens",
-    "UUID"
-  ],
-  "bugs": {
-    "url": "https://github.com/dVelopment/meteor-random/issues"
-  },
-  "homepage": "https://github.com/dVelopment/meteor-random"
+    "name": "meteor-random-node",
+    "version": "0.0.5",
+    "description": "Meteor's Random Package for Straight Node – with built in crypto module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "test": "node test.js",
+        "pretest": "yarn build",
+        "build": "tsc",
+        "prepublish": "yarn build",
+        "format": "prettier --write \"**/*.+(js|jsx|json|ts|tsx)\""
+    },
+    "author": "Trever Faden",
+    "license": "BSD-2-Clause",
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "^14.0.27",
+        "prettier": "^2.0.5",
+        "typescript": "^3.9.7"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dVelopment/meteor-random.git"
+    },
+    "keywords": [
+        "random",
+        "meteor",
+        "crypto",
+        "api",
+        "key",
+        "generator",
+        "api",
+        "keys",
+        "tokens",
+        "UUID"
+    ],
+    "bugs": {
+        "url": "https://github.com/dVelopment/meteor-random/issues"
+    },
+    "homepage": "https://github.com/dVelopment/meteor-random"
 }
