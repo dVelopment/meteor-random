@@ -7,14 +7,12 @@ export default abstract class AbstractRandomGenerator {
     /**
      * @summary Used like `Random`, but much faster and not cryptographically secure
      */
-    insecure: AbstractRandomGenerator | undefined;
+    insecure!: AbstractRandomGenerator;
     /**
      * @summary Create a non-cryptographically secure PRNG with a given seed (using
      * the Alea algorithm)
      */
-    createWithSeeds:
-        | ((...seeds: any | string) => AbstractRandomGenerator)
-        | undefined;
+    createWithSeeds!: (...seeds: any | string) => AbstractRandomGenerator;
     /**
      * @summary Return a number between 0 and 1, like `Math.random`.
      */
