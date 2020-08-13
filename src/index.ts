@@ -107,7 +107,7 @@ const BASE64_CHARS =
 // specify seeds. The caller is responsible for making sure to provide a seed
 // for alea if a csprng is not available.
 class RandomGenerator {
-    private alea?: () => number;
+    private readonly alea?: () => number;
 
     constructor(seedArray?: string[]) {
         if (seedArray !== undefined) {
@@ -123,11 +123,10 @@ class RandomGenerator {
     }
 
     fraction(): number {
-        const self = this;
-        if (self.alea) {
-            return self.alea();
+        if (this.alea) {
+            return this.alea();
         } else if (nodeCrypto) {
-            const numerator = parseInt(self.hexString(8), 16);
+            const numerator = parseInt(this.hexString(8), 16);
             return numerator * 2.3283064365386963e-10; // 2^-32
         } else if (typeof window && window?.crypto?.getRandomValues) {
             const array = new Uint32Array(1);
@@ -139,8 +138,7 @@ class RandomGenerator {
     }
 
     hexString(digits: number): string {
-        const self = this;
-        if (nodeCrypto && !self.alea) {
+        if (nodeCrypto && !this.alea) {
             const numBytes = Math.ceil(digits / 2);
             let bytes;
             // Try to get cryptographically strong randomness. Fall back to
@@ -158,7 +156,7 @@ class RandomGenerator {
         } else {
             const hexDigits = [];
             for (let i = 0; i < digits; ++i) {
-                hexDigits.push(self.choice('0123456789abcdef'));
+                hexDigits.push(this.choice('0123456789abcdef'));
             }
             return hexDigits.join('');
         }
@@ -167,16 +165,13 @@ class RandomGenerator {
     // 17 characters is around 96 bits of entropy, which is the amount of
     // state in the Alea PRNG.
     id(charsCount: number = 17): string {
-        const self = this;
-
-        return self._randomString(charsCount, UNMISTAKABLE_CHARS);
+        return this._randomString(charsCount, UNMISTAKABLE_CHARS);
     }
 
     // Default to 256 bits of entropy, or 43 characters at 6 bits per
     // character.
     secret(charsCount: number = 43): string {
-        const self = this;
-        return self._randomString(charsCount, BASE64_CHARS);
+        return this._randomString(charsCount, BASE64_CHARS);
     }
 
     choice(arrayOrString: string | any[]): string {
@@ -189,10 +184,9 @@ class RandomGenerator {
     }
 
     private _randomString(charsCount: number, alphabet: any): string {
-        const self = this;
         const digits = [];
-        for (var i = 0; i < charsCount; i++) {
-            digits[i] = self.choice(alphabet);
+        for (let i = 0; i < charsCount; i++) {
+            digits[i] = this.choice(alphabet);
         }
         return digits.join('');
     }
