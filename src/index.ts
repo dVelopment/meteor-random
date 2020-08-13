@@ -230,4 +230,4 @@ const Random =
               Math.random().toString(),
           ]);
 
-export default Random;
+export = Random;
