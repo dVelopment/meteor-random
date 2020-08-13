@@ -230,4 +230,4 @@ const Random =
               Math.random().toString(),
           ]);
 
-module.exports = Random;
+export default Random;
