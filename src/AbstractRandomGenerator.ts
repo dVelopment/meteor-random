@@ -40,7 +40,7 @@ export default abstract class AbstractRandomGenerator {
      * @param charsCount Optional length of the identifier in characters
      *   (defaults to 17)
      */
-    id(charsCount: number = 1): string {
+    id(charsCount: number = 17): string {
         return this.randomString(charsCount, UNMISTAKABLE_CHARS);
     }
 
